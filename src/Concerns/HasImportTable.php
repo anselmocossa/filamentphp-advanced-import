@@ -5,7 +5,6 @@ namespace Filament\AdvancedImport\Concerns;
 use Filament\Schemas\Components\EmbeddedTable;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -49,8 +48,9 @@ trait HasImportTable
     protected function getStatusColumns(): array
     {
         return [
-            BadgeColumn::make('estado')
+            TextColumn::make('estado')
                 ->label(__('advanced-import::messages.table.status'))
+                ->badge()
                 ->colors([
                     'success' => fn ($state) => in_array($state, ['sucesso', 'success', 'lida', 'criado', 'atualizado']),
                     'danger' => fn ($state) => in_array($state, ['rejeitado', 'failed', 'erro', 'falha']),

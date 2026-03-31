@@ -17,7 +17,9 @@ abstract class BaseImportPage extends Page implements HasTable
     use HasImportActions;
     use HasImportNotifications;
     use HasImportTable;
-    use InteractsWithTable;
+    use InteractsWithTable {
+        HasImportTable::table insteadof InteractsWithTable;
+    }
 
     /**
      * Preview data from uploaded file.
@@ -37,7 +39,7 @@ abstract class BaseImportPage extends Page implements HasTable
     /**
      * Get the view for the page.
      */
-    protected static string $view = 'advanced-import::filament.pages.import-page';
+    protected string $view = 'advanced-import::filament.pages.import-page';
 
     /**
      * Get the import processor.
