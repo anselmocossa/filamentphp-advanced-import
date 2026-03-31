@@ -78,6 +78,8 @@ return [
     'table' => [
         'empty_heading' => 'No Data Loaded',
         'empty_description' => 'Use the "Upload Excel" button to select a file.',
+        'status' => 'Status',
+        'error' => 'Error',
         'columns' => [
             'row' => 'Row',
             'status' => 'Status',
@@ -86,6 +88,17 @@ return [
             'time' => 'Time (ms)',
             'created_at' => 'Date',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Section Labels
+    |--------------------------------------------------------------------------
+    */
+    'section' => [
+        'preview' => 'Preview',
+        'results' => 'Results',
+        'row_count' => ':count rows',
     ],
 
     /*

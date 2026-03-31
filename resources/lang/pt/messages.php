@@ -78,6 +78,8 @@ return [
     'table' => [
         'empty_heading' => 'Nenhum Dado Carregado',
         'empty_description' => 'Utilize o botão "Carregar Excel" para selecionar um ficheiro.',
+        'status' => 'Estado',
+        'error' => 'Erro',
         'columns' => [
             'row' => 'Linha',
             'status' => 'Estado',
@@ -86,6 +88,17 @@ return [
             'time' => 'Tempo (ms)',
             'created_at' => 'Data',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Secções
+    |--------------------------------------------------------------------------
+    */
+    'section' => [
+        'preview' => 'Pré-visualização',
+        'results' => 'Resultados',
+        'row_count' => ':count linhas',
     ],
 
     /*
