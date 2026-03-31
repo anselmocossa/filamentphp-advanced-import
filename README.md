@@ -14,14 +14,14 @@ Advanced Excel import functionality for Filament 4.x resources with preview, bat
 - **Customizable Processing** - Define your own parsing and processing logic
 - **Multi-language Support** - English and Portuguese translations included
 - **Artisan Commands** - Quickly scaffold import pages and processors
-- **Filament 4.x Ready** - Built specifically for Filament v4
+- **Filament 4.x & 5.x Ready** - Built for Filament v4 and v5
 
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11+
-- Filament 4.0+
-- Maatwebsite Excel 3.1+
+- Laravel 11+, 12+ or 13+
+- Filament 4.0+ or 5.0+
+- Maatwebsite Excel 3.1+ or 4.0+
 
 ## Installation
 
