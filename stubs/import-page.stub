@@ -1,0 +1,73 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Filament\Resources\{{resourceClass}};
+use App\Processors\{{processorClass}};
+use Filament\AdvancedImport\Contracts\ImportProcessor;
+use Filament\AdvancedImport\Pages\BaseImportPage;
+use Filament\Tables\Columns\TextColumn;
+
+class Import{{modelPlural}} extends BaseImportPage
+{
+    protected static string $resource = {{resourceClass}}::class;
+
+    protected static ?string $title = 'Importar {{modelPlural}}';
+
+    protected static ?string $navigationLabel = 'Importar';
+
+    protected function getImportProcessor(): ImportProcessor
+    {
+        return new {{processorClass}}();
+    }
+
+    protected function parseRow(array $row): array
+    {
+        return [
+            // Map your Excel columns here
+            // 'field_name' => $this->getString($row, 'excel_column'),
+            // 'numeric_field' => $this->getFloat($row, 'excel_column'),
+            // 'date_field' => $this->getDate($row, 'excel_column'),
+        ];
+    }
+
+    protected function getTableColumns(): array
+    {
+        return [
+            // Add your preview columns here
+            // TextColumn::make('field_name')->label('Field Name'),
+        ];
+    }
+
+    /**
+     * Override to add custom form fields (e.g., month, year selectors)
+     */
+    // protected function getUploadFormSchema(): array
+    // {
+    //     return array_merge(parent::getUploadFormSchema(), [
+    //         \Filament\Forms\Components\Select::make('mes')
+    //             ->label('Mês')
+    //             ->options([...])
+    //             ->required(),
+    //     ]);
+    // }
+
+    /**
+     * Override to store custom form data
+     */
+    // protected function storeUploadContext(array $data): void
+    // {
+    //     $this->mes = $data['mes'] ?? null;
+    // }
+
+    /**
+     * Override to pass context to the processor
+     */
+    // protected function getProcessContext(): array
+    // {
+    //     return [
+    //         'mes' => $this->mes,
+    //         'ano' => $this->ano,
+    //     ];
+    // }
+}

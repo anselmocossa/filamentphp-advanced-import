@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Processors;
+
+use App\Models\{{modelClass}};
+use Filament\AdvancedImport\Contracts\ImportProcessor;
+use Filament\AdvancedImport\Traits\ProcessesImport;
+
+class {{processorClass}} implements ImportProcessor
+{
+    use ProcessesImport;
+
+    public function process(array $dados, array $context = []): array
+    {
+        return $this->processImportBatch(
+            dados: $dados,
+            categoria: '{{category}}',
+            userId: auth()->id()
+        );
+    }
+
+    /**
+     * Process a single item from the import.
+     *
+     * @param array $item Parsed row data
+     * @return array Result with at least 'estado' key
+     * @throws \Exception On validation/processing errors
+     */
+    protected function processItem(array $item): array
+    {
+        // Validate required fields
+        // if (empty($item['required_field'])) {
+        //     throw new \Exception('Campo obrigatório não preenchido');
+        // }
+
+        // Create or update the record
+        $record = {{modelClass}}::updateOrCreate(
+            // Unique key(s) for matching existing records
+            ['unique_field' => $item['unique_field'] ?? null],
+            // Fields to update/create
+            [
+                // 'field1' => $item['field1'] ?? null,
+                // 'field2' => $item['field2'] ?? null,
+            ]
+        );
+
+        // Return result details
+        return [
+            'id' => $record->id,
+            // Include any fields you want to show in the results table
+            // 'nome' => $record->nome,
+            'estado' => 'sucesso',
+        ];
+    }
+}
