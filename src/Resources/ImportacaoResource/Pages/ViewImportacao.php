@@ -2,6 +2,7 @@
 
 namespace Filament\AdvancedImport\Resources\ImportacaoResource\Pages;
 
+use Filament\Actions\Action;
 use Filament\AdvancedImport\Resources\ImportacaoResource\ImportacaoResource;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\ViewRecord;
@@ -72,6 +73,28 @@ class ViewImportacao extends ViewRecord
 
     protected function getHeaderActions(): array
     {
-        return [];
+        return [
+            Action::make('retry')
+                ->label(__('advanced-import::messages.resource.actions.retry'))
+                ->icon('heroicon-o-arrow-path')
+                ->color('warning')
+                ->visible(fn () => $this->record->falha > 0)
+                ->requiresConfirmation()
+                ->modalHeading(__('advanced-import::messages.resource.actions.retry_heading'))
+                ->modalDescription(__('advanced-import::messages.resource.actions.retry_description', [
+                    'count' => $this->record->falha ?? 0,
+                ]))
+                ->action(function () {
+                    // Re-route to the import page of the original resource
+                    // The user needs to re-upload and re-process
+                    $this->redirect(url()->previous());
+                }),
+
+            Action::make('back')
+                ->label(__('advanced-import::messages.resource.actions.back'))
+                ->icon('heroicon-o-arrow-left')
+                ->color('gray')
+                ->url(ImportacaoResource::getUrl('index')),
+        ];
     }
 }

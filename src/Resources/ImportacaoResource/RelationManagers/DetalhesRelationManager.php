@@ -15,10 +15,13 @@ class DetalhesRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
+        // Build dynamic columns from first record's payload
+        $payloadColumns = $this->getPayloadColumns();
+
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label('Row')
                     ->sortable(),
 
                 TextColumn::make('status')
@@ -30,18 +33,15 @@ class DetalhesRelationManager extends RelationManager
                         'warning' => fn ($state) => in_array($state, ['pendente', 'pending']),
                     ]),
 
-                TextColumn::make('payload')
-                    ->label(__('advanced-import::messages.resource.payload'))
-                    ->limit(50)
-                    ->tooltip(fn ($record) => json_encode($record->payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))
-                    ->toggleable(),
+                ...$payloadColumns,
 
                 TextColumn::make('erro')
                     ->label(__('advanced-import::messages.resource.erro'))
                     ->wrap()
-                    ->limit(100)
+                    ->limit(80)
+                    ->tooltip(fn ($record) => $record->erro)
                     ->color('danger')
-                    ->toggleable(),
+                    ->placeholder('-'),
 
                 TextColumn::make('tempo_ms')
                     ->label(__('advanced-import::messages.resource.tempo'))
@@ -66,5 +66,47 @@ class DetalhesRelationManager extends RelationManager
             ])
             ->defaultSort('id', 'asc')
             ->paginated([10, 25, 50, 100]);
+    }
+
+    /**
+     * Generate individual columns for each key in the payload JSON.
+     */
+    protected function getPayloadColumns(): array
+    {
+        $columns = [];
+
+        try {
+            $firstDetail = $this->getOwnerRecord()
+                ->detalhesRegistros()
+                ->whereNotNull('payload')
+                ->first();
+
+            if ($firstDetail && is_array($firstDetail->payload)) {
+                foreach ($firstDetail->payload as $key => $value) {
+                    // Skip internal keys
+                    if (in_array($key, ['estado', 'id', 'error'])) {
+                        continue;
+                    }
+
+                    $label = str_replace('_', ' ', ucfirst($key));
+
+                    $columns[] = TextColumn::make("payload.{$key}")
+                        ->label($label)
+                        ->getStateUsing(fn ($record) => $record->payload[$key] ?? '-')
+                        ->limit(40)
+                        ->toggleable();
+                }
+            }
+        } catch (\Throwable) {
+            // Fallback: show raw payload
+            $columns[] = TextColumn::make('payload')
+                ->label(__('advanced-import::messages.resource.payload'))
+                ->formatStateUsing(fn ($state) => is_array($state) ? implode(', ', $state) : $state)
+                ->limit(80)
+                ->wrap()
+                ->toggleable();
+        }
+
+        return $columns;
     }
 }

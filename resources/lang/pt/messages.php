@@ -185,6 +185,10 @@ return [
         'actions' => [
             'view' => 'Ver Detalhes',
             'export' => 'Exportar',
+            'retry' => 'Retentar Falhados',
+            'retry_heading' => 'Retentar Registos Falhados',
+            'retry_description' => ':count registo(s) falharam. Será redirecionado para re-carregar e re-processar o ficheiro.',
+            'back' => 'Voltar à Lista',
         ],
     ],
 

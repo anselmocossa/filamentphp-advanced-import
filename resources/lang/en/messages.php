@@ -185,6 +185,10 @@ return [
         'actions' => [
             'view' => 'View Details',
             'export' => 'Export',
+            'retry' => 'Retry Failed',
+            'retry_heading' => 'Retry Failed Records',
+            'retry_description' => ':count record(s) failed. You will be redirected to re-upload and re-process the file.',
+            'back' => 'Back to List',
         ],
     ],
 
