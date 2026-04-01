@@ -30,6 +30,8 @@ return [
         'confirm_description' => 'You are about to process :count record(s). This action cannot be undone. Do you want to continue?',
         'confirm_submit' => 'Process',
         'confirm_cancel' => 'Cancel',
+        'cancel' => 'Cancel',
+        'no_data' => 'No data found to process.',
     ],
 
     /*
@@ -65,6 +67,7 @@ return [
         'invalid_file' => 'Invalid File',
         'invalid_file_body' => 'The file format is not supported. Please use .xlsx or .xls files.',
         'error' => 'Error',
+        'import_error' => 'An error occurred while processing the import.',
         'error_body' => 'An error occurred while processing: :message',
         'processing' => 'Processing...',
         'processing_body' => 'Please wait while the data is being processed.',
@@ -121,11 +124,34 @@ return [
     | Resource (Audit)
     |--------------------------------------------------------------------------
     */
+    'page' => [
+        'title' => 'Import',
+    ],
+
+    'errors' => [
+        'file_not_found' => 'File not found.',
+    ],
+
     'resource' => [
         'label' => 'Import',
         'plural_label' => 'Imports',
         'navigation_label' => 'Import History',
         'navigation_group' => 'System',
+
+        'codigo' => 'Code',
+        'categoria' => 'Category',
+        'total' => 'Total',
+        'sucesso' => 'Success',
+        'falha' => 'Failed',
+        'user' => 'User',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
+        'details' => 'Import Details',
+        'success_rate' => 'Success Rate',
+        'status' => 'Status',
+        'payload' => 'Data',
+        'erro' => 'Error',
+        'tempo' => 'Time (ms)',
 
         'fields' => [
             'codigo' => 'Code',

@@ -30,6 +30,8 @@ return [
         'confirm_description' => 'Está prestes a processar :count registo(s). Esta acção não pode ser revertida. Deseja continuar?',
         'confirm_submit' => 'Processar',
         'confirm_cancel' => 'Cancelar',
+        'cancel' => 'Cancelar',
+        'no_data' => 'Não foram encontrados dados para processar.',
     ],
 
     /*
@@ -65,6 +67,7 @@ return [
         'invalid_file' => 'Ficheiro Inválido',
         'invalid_file_body' => 'O formato do ficheiro não é suportado. Por favor, utilize ficheiros .xlsx ou .xls.',
         'error' => 'Erro',
+        'import_error' => 'Ocorreu um erro durante o processamento da importação.',
         'error_body' => 'Ocorreu um erro durante o processamento: :message',
         'processing' => 'A processar...',
         'processing_body' => 'Por favor, aguarde enquanto os dados são processados.',
@@ -121,11 +124,34 @@ return [
     | Resource (Auditoria)
     |--------------------------------------------------------------------------
     */
+    'page' => [
+        'title' => 'Importação',
+    ],
+
+    'errors' => [
+        'file_not_found' => 'Ficheiro não encontrado.',
+    ],
+
     'resource' => [
         'label' => 'Importação',
         'plural_label' => 'Importações',
         'navigation_label' => 'Histórico de Importações',
         'navigation_group' => 'Sistema',
+
+        'codigo' => 'Código',
+        'categoria' => 'Categoria',
+        'total' => 'Total',
+        'sucesso' => 'Sucesso',
+        'falha' => 'Falha',
+        'user' => 'Utilizador',
+        'created_at' => 'Criado Em',
+        'updated_at' => 'Actualizado Em',
+        'details' => 'Detalhes da Importação',
+        'success_rate' => 'Taxa de Sucesso',
+        'status' => 'Estado',
+        'payload' => 'Dados',
+        'erro' => 'Erro',
+        'tempo' => 'Tempo (ms)',
 
         'fields' => [
             'codigo' => 'Código',
