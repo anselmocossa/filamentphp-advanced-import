@@ -95,7 +95,7 @@ class ImportacaoResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->actions([
-                \Filament\Tables\Actions\ViewAction::make(),
+                \Filament\Actions\ViewAction::make(),
             ])
             ->bulkActions([]);
     }

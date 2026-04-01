@@ -16,8 +16,10 @@ class ViewImportacao extends ViewRecord
     public function infolist(Schema $infolist): Schema
     {
         return $infolist
+            ->columns(1)
             ->schema([
                 Section::make(__('advanced-import::messages.resource.details'))
+                    ->columns(1)
                     ->schema([
                         Grid::make(3)
                             ->schema([
