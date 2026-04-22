@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `spatie/laravel-package-tools` to `^1.92` for Laravel 13 support (`illuminate/contracts ^13.0`)
+- Bump dev dependency `pestphp/pest` to `^3.0|^4.0` (Pest 2 is EOL and incompatible with Laravel 13 / PHPUnit 11+)
+
+### Compatibility
+
+- Verified against Laravel 13.6, Filament 5.6, `maatwebsite/excel` 3.1.68 and `orchestra/testbench` 11.1
+- Still supports Laravel 11/12 and Filament 4 via existing OR constraints
+
 ## [1.0.0] - 2025-01-01
 
 ### Added
