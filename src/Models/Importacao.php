@@ -91,8 +91,10 @@ class Importacao extends Model
 
     /**
      * Scope to filter by user.
+     *
+     * @param  int|string  $userId  Supports both int (autoinc) and string (UUID/ULID) user IDs
      */
-    public function scopeByUser($query, int $userId)
+    public function scopeByUser($query, int|string $userId)
     {
         return $query->where('user_id', $userId);
     }

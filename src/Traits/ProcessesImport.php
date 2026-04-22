@@ -16,7 +16,7 @@ trait ProcessesImport
      * @param  array  $dados  Data to be imported
      * @param  string  $categoria  Import category
      * @param  string|null  $codigo  Unique import code (UUID generated if null)
-     * @param  int|null  $userId  User ID for audit
+     * @param  int|string|null  $userId  User ID for audit (int or string to support UUID/ULID users)
      * @return array{codigo: string, status: string, total: int, sucesso: int, falha: int, dados: array}
      *
      * @throws Exception
@@ -25,7 +25,7 @@ trait ProcessesImport
         array $dados,
         string $categoria,
         ?string $codigo = null,
-        ?int $userId = null
+        int|string|null $userId = null
     ): array {
         DB::beginTransaction();
 

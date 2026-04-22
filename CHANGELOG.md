@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-04-23
+
+### Fixed
+
+- `ProcessesImport::processImportBatch()` signature: `?int $userId` → `int|string|null $userId`
+  (Laravel apps with UUID/ULID user IDs were hitting a TypeError when passing `auth()->id()`)
+- `Importacao::scopeByUser()` signature: `int $userId` → `int|string $userId` (same reason)
+
+### Notes
+
+- Published migration uses `foreignId('user_id')` which assumes bigint `users.id`. Apps with UUID
+  users should publish and adjust the migration to `foreignUuid('user_id')->constrained('users')`.
+
 ## [1.1.0] - 2026-04-22
 
 ### Changed
