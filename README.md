@@ -1,8 +1,8 @@
 # Filament Advanced Import
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/filamentphp/advanced-import.svg?style=flat-square)](https://packagist.org/packages/filamentphp/advanced-import)
-[![Total Downloads](https://img.shields.io/packagist/dt/filamentphp/advanced-import.svg?style=flat-square)](https://packagist.org/packages/filamentphp/advanced-import)
-[![License](https://img.shields.io/packagist/l/filamentphp/advanced-import.svg?style=flat-square)](LICENSE.md)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/filamentphp/advanced-import.svg?style=flat-square&cacheSeconds=300)](https://packagist.org/packages/filamentphp/advanced-import)
+[![Total Downloads](https://img.shields.io/packagist/dt/filamentphp/advanced-import.svg?style=flat-square&cacheSeconds=300)](https://packagist.org/packages/filamentphp/advanced-import)
+[![License](https://img.shields.io/packagist/l/filamentphp/advanced-import.svg?style=flat-square&cacheSeconds=300)](LICENSE.md)
 
 Advanced Excel import functionality for Filament 4.x resources with preview, batch processing, and audit trail.
 
