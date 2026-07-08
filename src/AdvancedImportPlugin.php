@@ -38,19 +38,10 @@ class AdvancedImportPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $resources = [];
-
         if ($this->withNavigation && ImportConfig::shouldRegisterNavigation()) {
-            $resources[] = ImportacaoResource::class;
-        } elseif (! $this->withNavigation) {
-            $resources[] = ImportacaoResource::class;
-        } else {
-            // Register as a page without navigation — noop since Resource always adds nav
-            // Better to not register at all if nav is disabled
-        }
-
-        if ($resources) {
-            $panel->resources($resources);
+            $panel->resources([
+                ImportacaoResource::class,
+            ]);
         }
     }
 
