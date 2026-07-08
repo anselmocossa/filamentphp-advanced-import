@@ -25,6 +25,11 @@ class ImportacaoResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Importações';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ImportConfig::shouldRegisterNavigation();
+    }
+
     public static function getNavigationIcon(): string
     {
         return ImportConfig::getNavigationIcon();

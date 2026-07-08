@@ -90,6 +90,14 @@ class ImportConfig
     }
 
     /**
+     * Check if resource navigation should be registered.
+     */
+    public static function shouldRegisterNavigation(): bool
+    {
+        return (bool) config('advanced-import.resource.should_register_navigation', true);
+    }
+
+    /**
      * Get resource navigation icon.
      */
     public static function getNavigationIcon(): string
